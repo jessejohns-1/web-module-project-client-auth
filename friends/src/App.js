@@ -16,7 +16,7 @@ function App() {
       localStorage.removeItem('token')
       localStorage.removeItem("role", res.data.role);
       localStorage.removeItem("username", res.data.username);
-      window.location.href = '/login'
+      window.location.href = '/'
     
     })
     .catch(error => {
@@ -34,15 +34,14 @@ function App() {
 
 
         <Link to="/login">Login</Link>
-
         <Link onClick={logout}>logout</Link>
-        <Link >Friends</Link>
 
 
+ 
         <Switch>
           <PrivateRoute exact path = '/protected'>
             <Friends />
-            
+
           </PrivateRoute>
           <Route exact path = '/login' component = {Login} />
           <Route component = {Login} />

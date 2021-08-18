@@ -4,8 +4,9 @@ class Login extends React.Component {
     state = {
         credentials: {
             username:"lambda",
-            password:"school"
-        }
+            password:"school",
+        },
+        isLoading: false
     };
 
 
@@ -20,10 +21,17 @@ class Login extends React.Component {
 
       login = e => {
         e.preventDefault();
+        this.setState({
+          ...this.state, isLoading:true
+        })
         axios.post('http://localhost:5000/api/login', this.state.credentials)
           .then(res => {
+
             console.log(res.data.payload)
             localStorage.setItem("token", res.data.payload)
+            this.setState({
+              ...this.state, isLoading:false
+            })
             this.props.history.push("./protected")
           })
           .catch(err=> {
@@ -42,6 +50,7 @@ class Login extends React.Component {
                 onChange={this.handleChange}
                 placeholder={"username"}
               />
+                      <div>{this.isLoading === true ? "...loading" : "wait"}</div>
               <input
                 type="password"
                 name="password"

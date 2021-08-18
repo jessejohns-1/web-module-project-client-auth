@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #9370DB;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,8 @@
 }
 
 .friends1 {
-  background-color: red;
+  background-color:#8372AA ;
   color:black;
-  
+  border:dotted #D2C385 5px;
+
 }
